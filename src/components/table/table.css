@@ -1,0 +1,10 @@
+.table-sm-my th,
+.table-sm-my td{
+    padding: 0.5rem 0.5rem 0.5rem 0.75rem;
+}
+
+.table-sm-my th input,
+.table-sm-my td input{
+    margin-left: -0.40rem;
+    width:102%;
+}
