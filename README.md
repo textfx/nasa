@@ -11,11 +11,11 @@ if a meteor in this mass size was not found then the filter resets the year to a
 "The user should see a message saying - mass was not found, jumping to first-year where there is a mass that fits the criteria)
 
 Example: 
-The user selects 1984 in the year box -> 
-The page shows 7 meteors -> 
-the user filters by 1000 mass -> 
-the page shows 4 meteors -> 
-the user filters by 100000 -> 
+The user selects 1984 in the year box -> \
+The page shows 7 meteors ->  \
+the user filters by 1000 mass -> \
+the page shows 4 meteors -> \
+the user filters by 100000 -> \
 the view jumps to year 1952 and shows 1 meteor
 
 
