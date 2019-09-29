@@ -10,7 +10,7 @@ Build a simple app that helps our user to complete the following flow
 if a meteor in this mass size was not found then the filter resets the year to a year where there is a meteor that fits the query
 "The user should see a message saying - mass was not found, jumping to first-year where there is a mass that fits the criteria)
 
-Example: 
+**Example:** \
 The user selects 1984 in the year box -> \
 The page shows 7 meteors ->  \
 the user filters by 1000 mass -> \
