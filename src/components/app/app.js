@@ -53,7 +53,7 @@ class App extends Component {
         if (!meteors)
             return <>Loading...</>;
 
-        //вечная загрузка, ошибка или нет, пробуем грузить пока не получится
+        // Вечная загрузка, ошибка или нет, пробуем грузить пока не получится
         if (meteors === "error") {
             //без слипа это будет ад для компьютера
             sleep(1000).then(() => {
@@ -64,7 +64,7 @@ class App extends Component {
             return <>Loading2...</>;
         }
 
-        //Так и не придумал где спрятать эти настройки таблицы((
+        // Настройки таблицы
         const columns = [
             {property: 'name', header: 'name'},
             {property: 'id', header: 'id'},
@@ -74,7 +74,7 @@ class App extends Component {
             {property: 'fall', header: 'fall'},
             {property: 'year', header: 'year',
                 render:(row={})=> {
-                    //пришлось усложнить условие, когда input в ячейке, выскакивает ошибка
+                    // Пришлось усложнить условие, когда input в ячейке, выскакивает ошибка
                    if (row.year && typeof row.year === "string" )
                       return giveYear(row.year);
                     else
@@ -116,23 +116,13 @@ class App extends Component {
 
 
         filter.setFilter({
-            "mass": (val)=>{
-                    return (!mass || (val && parseInt(val) >= mass))
-                            ? true
-                            : false;
-            },
-            "fall": (val)=>{
-                if (!fall|| fall === 'all' )
-                    return true;
-
-                else if (val === fall)
-                   return true;
-            },
+            "mass": (val)=> (!mass || (val && parseInt(val) >= mass)),
+            "fall": (val)=> (!fall || fall === 'all' || val === fall),
             "year": (val)=>{
                 if (!this.state.year)
                     return true;
 
-                //получаю массив из 4 элементов, 0 все выражение, индексы 1-2 это если диапазон лет, 3 это если один год написан
+                // Получаю массив из 4 элементов, 0 все выражение, индексы 1-2 это если диапазон лет, 3 это если один год написан
                 let years = (/([0-9]{1,5})\s*-\s*([0-9]{1,5})|([0-9]{1,5})/g).exec(this.state.year);
                 let year  = val && new Date(val).getFullYear();
 
@@ -140,16 +130,14 @@ class App extends Component {
                     return false;
 
                 return ((years[2] === undefined && year === parseInt(years[3]))  //Если год 1
-                        || (val && years[4] === undefined && year >= years[1] && year <years[2])) //диапазон лет
-                        ? true
-                        : false;
+                        || (year >= years[1] && year <=years[2])) //диапазон лет
             }
         });
 
-        //Наконец применяем фильтр, после всех настроек
+        // Наконец применяем фильтр, после всех настроек
         let filterData = filter.get();
 
-        //указаны год и масса, но метеор не найден
+        // Указаны год и масса, но метеор не найден
         if (mass && year &&filterData.length===0) {
             filter.addFilter({"year": null});
             filterData = filter.get();
@@ -178,13 +166,11 @@ class App extends Component {
     }
 }
 
-//И за того что брал значение из таргета, по событию, была бага, когда значение изменил в строке, а энтер нажал в другом input
-//Нужно все поля обновлять mass, fall, year
+// И за того что брал значение из таргета, по событию, была бага, когда значение изменил в строке, а энтер нажал в другом input
+// Нужно все поля обновлять mass, fall, year
 function giveAllVal(arr){
     let obj = {};
-    arr.forEach((v)=>{
-       obj[v]=document.getElementById(v).value;
-    });
+    arr.forEach((v)=> obj[v]=document.getElementById(v).value);
     return obj;
 }
 

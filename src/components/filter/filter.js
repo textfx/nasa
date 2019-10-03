@@ -2,7 +2,7 @@
 function Filter(array, filtersObj) {
     let arr = array ? [...array] : [];
     let result =  [];
-    let filters = filtersObj || {}; //обьект функций, названия функций для фильтрации == названием свойств в обьекте arr
+    let filters = filtersObj || {}; //обьект функций, "названия функций для фильтрации" == "названием свойств в обьекте arr"
 
     return {
         //на всякий нереальный случай

@@ -1,7 +1,7 @@
 import Chart from './chart';
 
-//json to [{year:1980, count:9}]
-//функция выполняет конкретную задачу, не знаю куда закинуть, пусть будет здесь
+// json to [{year:1980, count:9}]
+// Функция выполняет конкретную задачу, пусть будет здесь
 function customFilter(array) {
     let indexTemp = [];
     let dataChart = [];
