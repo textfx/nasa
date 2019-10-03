@@ -15,8 +15,8 @@ The user selects 1984 in the year box -> \
 The page shows 7 meteors ->  \
 the user filters by 1000 mass -> \
 the page shows 4 meteors -> \
-the user filters by 100000 -> \
-the view jumps to year 1952 and shows 1 meteor
+the user filters by 1000000 -> \
+the view jumps to year 1947 and shows 1 meteor
 
 
 # Getting Started With NASA
